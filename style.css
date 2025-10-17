@@ -1,0 +1,41 @@
+.Banner {
+    /* 화면 전체 높이를 사용해 중앙 정렬이 가능하도록 합니다. */
+
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+
+    margin: 10px;
+    padding: 10px;
+}
+
+/* 텍스트 컨테이너에 중앙 정렬 속성 추가 */
+.Notification {
+    text-align: center; 
+    margin-top: 300px; 
+    margin-bottom: 200px; 
+}
+
+p{
+    font-size: 30px;
+    font-family: Pretendard;
+    color: #FFE3AC;
+}
+ul{
+    /* ul의 기본 스타일을 재정의하여 가운데 정렬을 보조 (목록 마커가 중앙에 오지 않을 수 있음) */
+    list-style-position: inside;
+    padding-left: 0;
+    font-size: 30px;
+    font-family: Pretendard;
+    color: #FFE3AC;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+h1{
+    font-size: 80px;
+    font-weight: bold;
+    color: #FFE3AC;
+}
