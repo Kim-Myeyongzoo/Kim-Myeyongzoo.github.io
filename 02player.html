@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 PLAY - 음악 플레이어</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <div class="container">
+        <aside class="sidebar new-style">
+            
+            <div class="user-profile">
+                <div class="avatar"></div>
+                <div class="user-info">
+                    <p class="name">name</p>
+                    <p class="nickname">@nickname</p>
+                    <p class="date">Year/Month/day</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="01Index.html" class="menu-item">01 USER GUIDE</a>
+                <a href="02player.html" class="menu-item active">02 PLAY</a>
+                <a href="03archive.html" class="menu-item">03 MY ACHIVE</a>
+                <a href="04playlist.html" class="menu-item">04 ANALISTICS</a>
+                <a href="05history.html" class="menu-item">05 SETTING</a>
+            </nav>
+        </aside>
+
+        <main class="main-content player-page">
+            <div class="player-frame">
+                <div class="player-content">
+                    
+                    <div class="album-info-container">
+                        <div class="album-cover-placeholder">
+                            <img src="miles_davis_kind_of_blue.jpg" alt="Miles Davis - Kind of Blue Album Cover" class="album-cover">
+                        </div>
+                        <div class="track-details">
+                            <h1 class="track-title">Title</h1>
+                            <p class="track-subtitle">Subtitle</p>
+                            <p class="album-name">Album name.</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-container">
+                        <input type="range" min="0" max="100" value="30" class="custom-slider" id="musicSlider">
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
