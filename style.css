@@ -12,15 +12,17 @@ body, html {
     display: flex;
     height: 100vh; /* 뷰포트 전체 높이를 차지하도록 설정 */
     border: 1px solid black; /* 전체 테두리 (이미지 참고) */
+    /* 이전 코드에 있던 border: 1px solid black;는 제거하여 깔끔한 레이아웃을 유지합니다. */
 }
 
 /* 2. 고정 사이드바 */
 .sidebar {
-    width: 280px; /* 사이드바 고정 너비 (이미지 기반) */
+    width: 280px; /* 사이드바 고정 너비 */
     background-color: #fff;
-    /* 사이드바는 컨테이너 높이를 꽉 채우며 고정됩니다. */
-    flex-shrink: 0; /* 크기가 줄어들지 않도록 방지 */
+    flex-shrink: 0; 
     box-sizing: border-box;
+    /* 스크린샷처럼 좌우에 구분선을 추가할 수 있습니다 */
+    border-right: 1px solid #ddd; 
 }
 
 /* --- 사용자 프로필 스타일 --- */
@@ -30,16 +32,18 @@ body, html {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-bottom: 1px solid black; /* 이미지의 상단 섹션 분리선 */
+    /* border-bottom: 1px solid black; (스크린샷에 따라 얇은 회색으로 변경) */
+    border-bottom: 1px solid #eee;
 }
 
 .avatar {
     width: 100px;
     height: 100px;
-    background-color: #ccc; /* 원형 플레이스홀더 */
+    background-color: #ccc; 
     border-radius: 50%;
     margin-bottom: 15px;
 }
+
 
 .name {
     font-weight: bold;
@@ -53,67 +57,41 @@ body, html {
     margin: 3px 0 0 0;
 }
 
-
-.menu-item {
+.sidebar-menu a {
     display: block;
     padding: 15px 20px;
     text-decoration: none;
     color: #333;
     font-size: 0.95em;
-    border-bottom: 1px solid black; 
+    /* border-bottom: 1px solid black; (스크린샷에 따라 얇은 회색으로 변경) */
+    border-bottom: 1px solid #eee;
 }
 
 /* 활성화된 메뉴 항목 (01 USER GUIDE) */
 .menu-item.active {
-    background-color: #f0f0f0; /* 배경색으로 활성 상태 표시 */
+    background-color: #f0f0f0;
     font-weight: bold;
 }
 
 /* 3. 스크롤 가능한 메인 콘텐츠 영역 */
 .main-content {
-    flex-grow: 1; /* 남은 공간을 모두 차지하도록 설정 */
-    padding: 50px 80px; /* 내부 여백 */
-    /* ---- 핵심 속성: 이 영역에만 스크롤을 허용 ---- */
+    /* 💥 position: relative 유지 - 내부 겹치기 필요 시 대비 */
+    position: relative; 
+    flex-grow: 1; 
+    padding: 50px 80px; 
+    /* 💥 텍스트 정렬은 content-section이 담당하도록 제거 */
+    /* text-align: center; */ 
     overflow-y: auto; 
     box-sizing: border-box;
-}
-
-/* --- 메인 콘텐츠 스타일 --- */
-.header-image-placeholder {
-    width: 100%; /* 너비 조정 */
-    max-width: 1000px; /* 최대 너비 제한 */
-    /* 1:1 비율을 유지하기 위한 핵: padding-bottom을 너비의 비율로 설정 */
-    height: 10%;
-    padding-bottom: 60%; 
-    background-color: #ccc;
-    margin: 0 auto 50px; /* 가운데 정렬 및 하단 여백 */
     
-    /* X자 모양의 플레이스홀더를 위한 스타일 (선택 사항) */
-    background-image: 
-        linear-gradient(to top right, transparent 48%, rgba(0,0,0,0.1) 48%, rgba(0,0,0,0.1) 52%, transparent 52%),
-        linear-gradient(to bottom right, transparent 48%, rgba(0,0,0,0.1) 48%, rgba(0,0,0,0.1) 52%, transparent 52%);
+    /* 💥 main-content 내부에 이미지/헤더가 가운데 오도록 임시 Flexbox 적용 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 .content-section {
-    max-width: 650px; /* 텍스트 가독성을 위한 최대 너비 설정 */
-    margin: 0 auto; /* 메인 콘텐츠 영역 내에서 가운데 정렬 */
-    text-align: center;
-}
-
-.title {
-    font-size: 2.8em;
-    margin: 0 0 5px 0;
-    font-weight: bold;
-}
-
-.subtitle {
-    font-size: 1.3em;
-    color: #666;
-    margin: 0 0 40px 0;
-}
-
-.article-text {
-    line-height: 1.8;
-    text-align: justify; /* 양쪽 정렬 */
-    font-size: 1em;
+    text-align: center; 
+    width: 70%;
+    max-width: 700px;   
 }

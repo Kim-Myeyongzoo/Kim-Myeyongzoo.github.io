@@ -7,7 +7,7 @@ body, html {
     color: #333;
 }
 
-/* 1. 메인 컨테이너: Flexbox를 사용하여 가로 분할 (모든 페이지에 적용) */
+/* 1. 메인 컨테이너: Flexbox를 사용하여 가로 분할 */
 .container {
     display: flex;
     height: 100vh; /* 뷰포트 전체 높이를 차지하도록 설정 */
@@ -15,32 +15,35 @@ body, html {
     /* 이전 코드에 있던 border: 1px solid black;는 제거하여 깔끔한 레이아웃을 유지합니다. */
 }
 
-/* 2. 고정 사이드바: 모든 페이지에 동일한 스타일 적용 */
+/* 2. 고정 사이드바 */
 .sidebar {
-    width: 280px; /* 💡 너비 통일 */
+    width: 280px; /* 사이드바 고정 너비 */
     background-color: #fff;
+    flex-shrink: 0; 
     box-sizing: border-box;
+    /* 스크린샷처럼 좌우에 구분선을 추가할 수 있습니다 */
+    border-right: 1px solid #ddd; 
 }
 
-/* --- 통일된 사용자 정보 영역 (간소화된 텍스트 디자인) --- */
-/* 첫 번째 페이지의 user-profile과 두 번째 페이지의 user-info-top을 모두 포용하기 위해
-   HTML에서 .user-info-top 클래스를 사용하는 것이 좋습니다. */
+/* --- 사용자 프로필 스타일 --- */
 .user-profile {
     padding: 30px 20px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-bottom: 1px solid black; /* 이미지의 상단 섹션 분리선 */
+    /* border-bottom: 1px solid black; (스크린샷에 따라 얇은 회색으로 변경) */
+    border-bottom: 1px solid #eee;
 }
 
 .avatar {
     width: 100px;
     height: 100px;
-    background-color: #ccc; /* 원형 플레이스홀더 */
+    background-color: #ccc; 
     border-radius: 50%;
     margin-bottom: 15px;
 }
+
 
 .name {
     font-weight: bold;
@@ -48,85 +51,45 @@ body, html {
     margin: 0;
 }
 
-
 .nickname, .date {
     font-size: 0.8em;
     color: #666;
     margin: 3px 0 0 0;
 }
 
-.menu-item {
+.sidebar-menu a {
     display: block;
     padding: 15px 20px;
     text-decoration: none;
     color: #333;
     font-size: 0.95em;
-    border-bottom: 1px solid black; 
+    /* border-bottom: 1px solid black; (스크린샷에 따라 얇은 회색으로 변경) */
+    border-bottom: 1px solid #eee;
 }
 
-
+/* 활성화된 메뉴 항목 (01 USER GUIDE) */
 .menu-item.active {
     background-color: #f0f0f0;
     font-weight: bold;
 }
 
-/* 3. 스크롤 가능한 메인 콘텐츠 영역 (공통 속성) */
+/* 3. 스크롤 가능한 메인 콘텐츠 영역 */
 .main-content {
+    /* 💥 position: relative 유지 - 내부 겹치기 필요 시 대비 */
+    position: relative; 
     flex-grow: 1; 
+    padding: 50px 80px; 
+    /* 💥 텍스트 정렬은 content-section이 담당하도록 제거 */
+    /* text-align: center; */ 
     overflow-y: auto; 
     box-sizing: border-box;
-}
-
-/* ----------------------------------------------------- */
-/* --- 4. 인덱스 페이지 전용 스타일 (Main-Content) --- */
-/* ----------------------------------------------------- */
-
-.content-page { /* 인덱스 페이지의 main-content에 추가적인 클래스 부여 가정 */
-    padding: 50px 80px; 
-    background-color: #f9f9f9;
-}
-
-.header-image-placeholder {
-    width: 60%; 
-    max-width: 500px; 
-    height: 0;
-    padding-bottom: 60%; 
-    background-color: #ccc;
-    margin: 0 auto 50px; 
-    /* ... (X자 모양 스타일 유지) ... */
+    
+    /* 💥 main-content 내부에 이미지/헤더가 가운데 오도록 임시 Flexbox 적용 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 .content-section {
-    max-width: 650px;
-    margin: 0 auto; 
-    text-align: center;
+    text-align: center; 
 }
-/* ... (title, subtitle, article-text 스타일 유지) ... */
-
-
-/* ----------------------------------------------------- */
-/* --- 5. 플레이어 페이지 전용 스타일 (Main-Content) --- */
-/* ----------------------------------------------------- */
-
-.player-page { /* 플레이어 페이지의 main-content에 적용 */
-    padding: 50px;
-    background-color: #e0e0e0; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.player-frame {
-    width: 80%;
-    max-width: 650px;
-    height: 80%;
-    max-height: 500px;
-    background-color: #f9f9f9;
-    border: 15px solid #ccc; 
-    border-radius: 20px;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/* ... (album-info-container, custom-slider 스타일 유지) ... */
