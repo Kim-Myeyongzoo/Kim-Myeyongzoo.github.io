@@ -105,6 +105,7 @@ body, html {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);  
     text-align: center;
+    position: relative;
 }
 .album-cover-placeholder{
     width: 300px;
@@ -114,4 +115,11 @@ body, html {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+}
+.arrow {
+    position: absolute;
+    top: 20px;   /* 상단에서 20px 떨어뜨려 여백을 줌 */
+    left: 20px;  /* 좌측에서 20px 떨어뜨려 여백을 줌 */
+    z-index: 10; /* 다른 요소 위에 표시되도록 z-index 설정 (선택 사항) */
+    cursor: pointer; /* 클릭 가능한 요소임을 나타내기 위해 커서 모양 변경 */
 }

@@ -93,3 +93,129 @@ body, html {
 .content-section {
     text-align: center; 
 }
+.album-cover{
+    width: 200px;
+    height: 200px;
+}
+
+/* 기본 초기화 및 설정 (기존 코드 유지) */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* 1. 메인 컨테이너: Flexbox를 사용하여 가로 분할 (기존 코드 유지) */
+.container {
+    display: flex;
+    height: 100vh;
+    border: 1px solid black; /* 요청에 따라 border를 유지 */
+}
+
+/* 2. 고정 사이드바 및 프로필/메뉴 스타일 (기존 코드 유지) */
+.sidebar {
+    width: 280px;
+    background-color: #fff;
+    flex-shrink: 0; 
+    box-sizing: border-box;
+    border-right: 1px solid #ddd; 
+}
+
+.user-profile {
+    padding: 30px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+
+/* ----------------------------------------------------
+ * 3. 메인 콘텐츠 영역 (Archive Page 통합 및 충돌 해결)
+ * ---------------------------------------------------- */
+
+.main-content {
+    position: relative; 
+    flex-grow: 1; 
+    overflow-y: auto; 
+    box-sizing: border-box;
+    /* 💥 기본적으로 flex 중앙 정렬을 제거합니다. 
+       Archive 페이지는 전체 너비를 사용해야 하므로 중앙 정렬이 방해됩니다. */
+    display: block; 
+    padding: 0; /* padding을 하위 .archive-grid 컨테이너에서 관리하도록 재설정 */
+}
+
+
+
+.archive-title {
+    font-size: 2.2em;
+    padding: 50px 80px 40px 80px; /* 메인 콘텐츠의 상단 padding 재설정 */
+    margin: 0;
+}
+.archive-title_2 {
+    font-size: 1.6em;
+    padding: 30px 80px 20px 80px; /* 메인 콘텐츠의 상단 padding 재설정 */
+    margin: 0;
+}
+
+/* ------------------------------------
+ * 4. 그리드 레이아웃 (앨범 갤러리)
+ * ------------------------------------ */
+
+.album-grid {
+    /* 💥 Archive 갤러리 컨테이너에만 padding 적용 */
+    padding: 0 80px 50px 80px; 
+    
+    display: grid;
+    /* 반응형 열 설정 */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px; /* 앨범 커버 사이의 간격 */
+}
+
+/* ------------------------------------
+ * 5. 개별 앨범 아이템 스타일 및 호버 효과
+ * ------------------------------------ */
+
+.album-item {
+    display: block;
+    text-decoration: none;
+    position: relative; 
+    cursor: pointer;
+    /* 정사각형 비율 유지 */
+    aspect-ratio: 1 / 1; 
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.album-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.3s;
+}
+
+/* 호버 오버레이 */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); 
+    border-radius: 25px;
+    transition: background-color 0.3s ease; 
+    pointer-events: none; 
+}
+
+/* 호버 시 스타일 */
+.album-item:hover .overlay {
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+
+.album-item:hover .album-cover-img {
+    transform: scale(1.03); 
+}
